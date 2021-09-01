@@ -1,0 +1,40 @@
+
+runners:
+  user: teamcode
+  url: 'http://localhost:8080/api/v1/runners'
+  interval: 5000
+  token: 'a4f9043d55921e9b40c8'
+  #interval: 5000000000
+  worker:
+    enabled: true
+  trace:
+    watch: true
+  pipelines-work-dir: '/Users/chiang/my-temp/teamcode-home/data/ci/pipelines'
+  artifacts-dir: '/Users/chiang/my-temp/teamcode-home/data/ci/artifacts'
+
+  docker:
+    image: teamcode/default-image:latest
+    cpuset-cpus: '0,1'
+    privileged: false
+    disable-cache: false
+    cache-dir: '/Users/chiang/my-temp/teamcode-home/data/cache'
+    pull-policy: 'NEVER'
+    #volumes: ["/data", "/home/project/cache"]
+    volumes: ["/Users/chiang/.gradle:/home/teamcode/.gradle", "/Users/chiang/.m2:/home/teamcode/.m2"]
+
+
+
+container:
+  # Connector Protocol. 'HTTP/1.1' or 'AJP/1.3'
+  protocol: AJP/1.3
+  port: 8019
+
+logging:
+
+  # logger level
+  level:
+    io:
+      teamcode: DEBUG
+    com:
+      spotify:
+        docker: DEBUG
